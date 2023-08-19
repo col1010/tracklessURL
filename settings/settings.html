@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <script src="../scripts/settings.js" type="module"></script>
+    <script src="../resources/bootstrap.js"></script>
+    <link rel="stylesheet" href="settings.css">
+    <link rel="stylesheet" href="../resources/bootstrap.css">
+    <link rel="stylesheet" href="../resources/fontawesome/css/fontawesome.css">
+    <link rel="stylesheet" href="../resources/fontawesome/css/regular.css">
+    <link rel="stylesheet" href="../resources/fontawesome/css/solid.css">
+    <title>Settings</title>
+</head>
+
+<body class="mb-5">
+    <h1 class="text-center py-2">Settings</h1>
+    <hr>
+    <br>
+    <form id="addRuleForm" class="mx-auto p-2" novalidate>
+        <h2>Add Rules Manually</h2>
+        <br>
+        <div class="mb-3 row">
+            <div class="col">
+                <label for="parameter" class="form-label main_tooltip">Parameter</label>
+                <i class="far fa-question-circle main_tooltip" data-bs-toggle="tooltip"
+                    title='The URL parameter you want the browser to remove automatically. Valid characters include a-z, A-Z, 0-9, "-", and "_"'></i>
+                <input type="text" class="form-control" id="parameter" name="parameter" placeholder="Ex: utm_source"
+                    required>
+            </div>
+            <div class="col">
+                <label for="group" class="form-label">Group (optional)</label>
+                <i class="far fa-question-circle main_tooltip" data-bs-toggle="tooltip"
+                    title='The group you want to add this parameter to. Groups could be specific types of trackers, a domain specific trackers are on, etc. Valid characters include a-z, A-Z, 0-9, " ", "-", ".", and "_"'></i>
+                <input type="text" class="form-control" id="group" name="group" placeholder="Ex: Facebook">
+            </div>
+        </div>
+        <!-- <h3>Filter Mode</h3> -->
+        <div class="row">
+            <div class="col-lg-3 col-md-4">
+                <label class="form-label">Filter Mode</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="whitelistRadio" name="domainFilterType"
+                        value="Whitelist" checked>
+                    <label class="form-check-label" for="whitelistRadio">Whitelist</label>
+                    <i class="far fa-question-circle main_tooltip" data-bs-toggle="tooltip"
+                        title="Remove the parameter on all domains EXCEPT the specified domains. Leave the domain list empty to remove the parameter on all domains."></i>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="blacklistRadio" name="domainFilterType"
+                        value="Blacklist">
+                    <label class="form-check-label" for="blacklistRadio">Blacklist</label>
+                    <i class="far fa-question-circle main_tooltip" data-bs-toggle="tooltip"
+                        title="Remove the parameter ONLY on the specified domains. The domain list must include at least one domain."></i>
+                </div>
+            </div>
+            <div class="col">
+                <label for="domainFilterList" class="form-label">Domain List</label>
+                <i class="far fa-question-circle main_tooltip" data-bs-toggle="tooltip"
+                    title='The list of domains to either whitelist or blacklist. Do not include https:// or www. Valid characters include a-z, A-Z, 0-9, "-", and ".". Domains must be 1 or more characters followed by a "." followed by 2 or more characters'></i>
+                <textarea class="form-control" id="domainFilterList" name="domainFilterList" rows="2" cols="50"
+                    placeholder="Ex: google.com, amazon.co.uk, github.com"></textarea>
+            </div>
+
+        </div>
+        <br>
+        <div class="text-center">
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </div>
+    </form>
+    <br>
+    <br>
+    <h3 class="text-center">OR</h3>
+    <br>
+    <div id="addRulesViaURLContainer" class="mx-auto">
+        <h2>Add Rules Via URL</h2>
+        <br>
+        <input type="text" id="urlInput" placeholder="Paste URL here" class="form-control">
+        <br>
+        <div class="text-center">
+            <button id="getParamsButton" class="btn btn-primary">Get Parameters</button>
+        </div>
+        <br>
+        <div id="generatedParamsContainer"></div>
+    </div>
+
+    <hr>
+    <br>
+    <h2 class="ruleListHeader mb-3">Rule Groups</h2>
+
+    <div id="ruleGroupListContainer">
+        <!-- Rule Group content dynamically generated here -->
+    </div>
+
+    <br>
+    <hr>
+    <br>
+
+    <div class="ruleListHeader mb-3 d-flex align-items-center">
+        <h2 class="me-3 mb-0" style="display: inline;">All Rules</h2>
+        <button id="showRuleListButton" class="btn btn-primary">Show</button>
+    </div>
+    <div id="ruleListContainer">
+        <!-- Rule cards will be dynamically generated here -->
+    </div>
+
+    <br>
+    <hr>
+    <br>
+
+    <div class="ruleListHeader mb-3 d-flex align-items-center">
+        <h2 class="me-1 mb-0" style="display: inline;">Global Whitelist Rules</h2>
+        <i class="far fa-question-circle me-3 main_tooltip" data-bs-toggle="tooltip"
+            title='Global Whitelist Rules disable all rules on a specific domain. If the extension is breaking a website, add its domain here.'></i>
+        <button id="addGlobalWhitelistRuleButton" class="btn btn-primary">Add Global Whitelist Rule</button>
+    </div>
+    <div id="globalWhitelistRuleListContainer">
+        <!-- Rule cards will be dynamically generated here -->
+    </div>
+
+    <div id="editOverlayContainer">
+        <div id="editOverlay" class="p-3 rounded-3 border border-3 border-dark">
+            <!-- Content for editing rules -->
+            <form id="editRuleForm" class="mx-auto p-2">
+                <h2 class="text-center">Edit Rule</h2>
+                <br>
+                <div class="row">
+                    <div class="col-4">
+                        <label for="editParameter" class="form-label">Parameter</label>
+                        <input type="text" class="form-control opacity-75" id="editParameter" name="editParameter"
+                            readonly required>
+                    </div>
+                    <div class="col-3">
+                        <label for="editGroup" class="form-label">Group (optional)</label>
+                        <input type="text" class="form-control" id="editGroup" name="editGroup"
+                            placeholder="Ex: Facebook">
+                    </div>
+                    <div class="col-1">
+                        <label class="form-label" for="editRuleId">ID</label>
+                        <input class="form-control opacity-75" type="text" id="editRuleId" name="editRuleId" readonly>
+                    </div>
+                    <div class="col-4">
+                        <div class="row">
+                            <label class="form-label">Filter Mode</label>
+                            <div class="col text-start">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="editWhitelistRadio"
+                                        name="editDomainFilterType" value="Whitelist">
+                                    <label class="form-check-label" for="editWhitelistRadio">Whitelist</label>
+                                </div>
+                            </div>
+                            <div class="col text-start">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="editBlacklistRadio"
+                                        name="editDomainFilterType" value="Blacklist">
+                                    <label class="form-check-label" for="editBlacklistRadio">Blacklist</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <label for="editDomainFilterList" class="form-label">Domain List</label>
+                <textarea class="form-control" id="editDomainFilterList" name="editDomainFilterList" rows="2" cols="50"
+                    placeholder="Ex: google.com, amazon.co.uk, github.com"></textarea>
+                <br>
+                <input id="saveButton" type="submit" class="btn btn-primary" value="Save Changes">
+                <button id="cancelButton" type="button" class="btn btn-danger">Cancel</button>
+            </form>
+        </div>
+    </div>
+    <div id="bottomAlertContainer" class="fixed-bottom" style="margin-left: auto; margin-right: auto;"></div>
+
+    <div id="whitelistOverlayContainer">
+        <div id="globalWhitelistOverlay" class="p-3 rounded-3 border border-3 border-dark">
+            <form id="addGlobalWhitelistRuleForm" class="mx-auto p-2">
+                <h2 class="text-center">Add Global Whitelist Rule</h2>
+                <br>
+                <label for="globalWhitelistDomain" class="form-label">Domain</label>
+                <input type="text" class="form-control" id="globalWhitelistDomain" name="globalWhitelistDomain" required
+                    placeholder="Ex: google.com">
+                <br>
+                <input id="submitGlobalWhitelistRuleButton" type="submit" class="btn btn-primary" value="Submit">
+                <button id="whitelistCancelButton" type="button" class="btn btn-danger">Cancel</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
