@@ -1,7 +1,7 @@
 # tracklessURL
 Browser extension for stripping tracking parameters from URLs
 
-tracklessURL is a privacy-focused extension that automatically removes tracking parameters from URLs before they're visited. Using the Declarative Net Request API, tracklessURL is able to modify URLs without ever requiring intrusive permissions. This means the extension is unable to view or store what websites you visit.
+tracklessURL is a privacy-focused browser extension that automatically removes tracking parameters from URLs before they're visited. Using the Declarative Net Request API, tracklessURL is able to modify URLs without ever requiring intrusive permissions. This means the extension is unable to view or store what websites you visit.
 
 Features:
 
