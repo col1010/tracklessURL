@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
     "name": "tracklessURL",
-    "version": "0.0.1",
-    "description": "Strips tracking parameters from URLs",
+    "version": "0.0.101",
+    "description": "Removes tracking parameters from URLs",
 
     "permissions": [
       "declarativeNetRequestWithHostAccess",
