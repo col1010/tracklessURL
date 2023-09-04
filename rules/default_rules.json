@@ -1296,34 +1296,6 @@
                 "transform": {
                     "queryTransform": {
                         "removeParams": [
-                            "id"
-                        ]
-                    }
-                }
-            }
-        },
-        "condition": {
-            "isUrlFilterCaseSensitive": true,
-            "regexFilter": "[?&]id=",
-            "resourceTypes": [
-                "main_frame"
-            ],
-            "requestDomains": [
-                "google.com",
-                "bing.com"
-            ]
-        }
-    },
-    {
-        "id": 1,
-        "group": "Google",
-        "priority": 1,
-        "action": {
-            "type": "redirect",
-            "redirect": {
-                "transform": {
-                    "queryTransform": {
-                        "removeParams": [
                             "sca_esv"
                         ]
                     }
@@ -1951,6 +1923,54 @@
                 "transform": {
                     "queryTransform": {
                         "removeParams": [
+                            "pk_medium"
+                        ]
+                    }
+                }
+            }
+        },
+        "condition": {
+            "isUrlFilterCaseSensitive": true,
+            "regexFilter": "[?&]pk_medium=",
+            "resourceTypes": [
+                "main_frame"
+            ]
+        }
+    },
+    {
+        "id": 1,
+        "group": "Piwik",
+        "priority": 1,
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "transform": {
+                    "queryTransform": {
+                        "removeParams": [
+                            "pk_content"
+                        ]
+                    }
+                }
+            }
+        },
+        "condition": {
+            "isUrlFilterCaseSensitive": true,
+            "regexFilter": "[?&]pk_content=",
+            "resourceTypes": [
+                "main_frame"
+            ]
+        }
+    },
+    {
+        "id": 1,
+        "group": "Piwik",
+        "priority": 1,
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "transform": {
+                    "queryTransform": {
+                        "removeParams": [
                             "piwik_campaign"
                         ]
                     }
@@ -2008,6 +2028,54 @@
         "condition": {
             "isUrlFilterCaseSensitive": true,
             "regexFilter": "[?&]piwik_keyword=",
+            "resourceTypes": [
+                "main_frame"
+            ]
+        }
+    },
+    {
+        "id": 1,
+        "group": "Piwik",
+        "priority": 1,
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "transform": {
+                    "queryTransform": {
+                        "removeParams": [
+                            "piwik_medium"
+                        ]
+                    }
+                }
+            }
+        },
+        "condition": {
+            "isUrlFilterCaseSensitive": true,
+            "regexFilter": "[?&]piwik_medium=",
+            "resourceTypes": [
+                "main_frame"
+            ]
+        }
+    },
+    {
+        "id": 1,
+        "group": "Piwik",
+        "priority": 1,
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "transform": {
+                    "queryTransform": {
+                        "removeParams": [
+                            "piwik_content"
+                        ]
+                    }
+                }
+            }
+        },
+        "condition": {
+            "isUrlFilterCaseSensitive": true,
+            "regexFilter": "[?&]piwik_content=",
             "resourceTypes": [
                 "main_frame"
             ]
@@ -2644,7 +2712,8 @@
                 "main_frame"
             ],
             "requestDomains": [
-                "spotify.com"
+                "spotify.com",
+                "youtube.com"
             ]
         }
     },
@@ -2830,6 +2899,60 @@
         "condition": {
             "isUrlFilterCaseSensitive": true,
             "regexFilter": "[?&]event=",
+            "resourceTypes": [
+                "main_frame"
+            ],
+            "requestDomains": [
+                "youtube.com"
+            ]
+        }
+    },
+    {
+        "id": 1,
+        "group": "Youtube",
+        "priority": 1,
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "transform": {
+                    "queryTransform": {
+                        "removeParams": [
+                            "embeds_referring_euri"
+                        ]
+                    }
+                }
+            }
+        },
+        "condition": {
+            "isUrlFilterCaseSensitive": true,
+            "regexFilter": "[?&]embeds_referring_euri=",
+            "resourceTypes": [
+                "main_frame"
+            ],
+            "requestDomains": [
+                "youtube.com"
+            ]
+        }
+    },
+    {
+        "id": 1,
+        "group": "Youtube",
+        "priority": 1,
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "transform": {
+                    "queryTransform": {
+                        "removeParams": [
+                            "source_ve_path"
+                        ]
+                    }
+                }
+            }
+        },
+        "condition": {
+            "isUrlFilterCaseSensitive": true,
+            "regexFilter": "[?&]source_ve_path=",
             "resourceTypes": [
                 "main_frame"
             ],
@@ -4333,7 +4456,6 @@
             ]
         }
     },
-
     {
         "id": 1,
         "group": "LinkedIn",
@@ -4361,7 +4483,6 @@
             ]
         }
     },
-
     {
         "id": 1,
         "group": "LinkedIn",
@@ -4389,7 +4510,6 @@
             ]
         }
     },
-
     {
         "id": 1,
         "group": "LinkedIn",
@@ -4417,7 +4537,6 @@
             ]
         }
     },
-
     {
         "id": 1,
         "group": "LinkedIn",
@@ -4445,7 +4564,6 @@
             ]
         }
     },
-
     {
         "id": 1,
         "group": "LinkedIn",
@@ -4473,7 +4591,6 @@
             ]
         }
     },
-
     {
         "id": 1,
         "group": "LinkedIn",
@@ -4501,7 +4618,6 @@
             ]
         }
     },
-
     {
         "id": 1,
         "group": "LinkedIn",
@@ -4529,7 +4645,6 @@
             ]
         }
     },
-
     {
         "id": 1,
         "group": "LinkedIn",
@@ -4557,7 +4672,6 @@
             ]
         }
     },
-
     {
         "id": 1,
         "group": "LinkedIn",
@@ -4582,6 +4696,138 @@
             ],
             "requestDomains": [
                 "linkedin.com"
+            ]
+        }
+    },
+    {
+        "id": 1,
+        "group": "LinkedIn",
+        "priority": 1,
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "transform": {
+                    "queryTransform": {
+                        "removeParams": [
+                            "mcid"
+                        ]
+                    }
+                }
+            }
+        },
+        "condition": {
+            "isUrlFilterCaseSensitive": true,
+            "regexFilter": "[?&]mcid=",
+            "resourceTypes": [
+                "main_frame"
+            ],
+            "requestDomains": [
+                "linkedin.com"
+            ]
+        }
+    },
+    {
+        "id": 1,
+        "group": "LinkedIn",
+        "priority": 1,
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "transform": {
+                    "queryTransform": {
+                        "removeParams": [
+                            "ePP"
+                        ]
+                    }
+                }
+            }
+        },
+        "condition": {
+            "isUrlFilterCaseSensitive": true,
+            "regexFilter": "[?&]ePP=",
+            "resourceTypes": [
+                "main_frame"
+            ],
+            "requestDomains": [
+                "linkedin.com"
+            ]
+        }
+    },
+    {
+        "id": 1,
+        "group": "LinkedIn",
+        "priority": 1,
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "transform": {
+                    "queryTransform": {
+                        "removeParams": [
+                            "ccuid"
+                        ]
+                    }
+                }
+            }
+        },
+        "condition": {
+            "isUrlFilterCaseSensitive": true,
+            "regexFilter": "[?&]ccuid=",
+            "resourceTypes": [
+                "main_frame"
+            ],
+            "requestDomains": [
+                "linkedin.com"
+            ]
+        }
+    },
+    {
+        "id": 1,
+        "group": "LinkedIn",
+        "priority": 1,
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "transform": {
+                    "queryTransform": {
+                        "removeParams": [
+                            "cid"
+                        ]
+                    }
+                }
+            }
+        },
+        "condition": {
+            "isUrlFilterCaseSensitive": true,
+            "regexFilter": "[?&]cid=",
+            "resourceTypes": [
+                "main_frame"
+            ],
+            "requestDomains": [
+                "linkedin.com"
+            ]
+        }
+    },
+    {
+        "id": 1,
+        "group": "Reddit",
+        "priority": 1,
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "transform": {
+                    "queryTransform": {
+                        "removeParams": [
+                            "share_id"
+                        ]
+                    }
+                }
+            }
+        },
+        "condition": {
+            "isUrlFilterCaseSensitive": true,
+            "regexFilter": "[?&]share_id=",
+            "resourceTypes": [
+                "main_frame"
             ]
         }
     }
