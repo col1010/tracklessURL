@@ -1242,33 +1242,6 @@
                 "transform": {
                     "queryTransform": {
                         "removeParams": [
-                            "sa"
-                        ]
-                    }
-                }
-            }
-        },
-        "condition": {
-            "isUrlFilterCaseSensitive": true,
-            "regexFilter": "[?&]sa=",
-            "resourceTypes": [
-                "main_frame"
-            ],
-            "requestDomains": [
-                "google.com"
-            ]
-        }
-    },
-    {
-        "id": 1,
-        "group": "Google",
-        "priority": 1,
-        "action": {
-            "type": "redirect",
-            "redirect": {
-                "transform": {
-                    "queryTransform": {
-                        "removeParams": [
                             "usg"
                         ]
                     }
