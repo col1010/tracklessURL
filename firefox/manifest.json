@@ -1,0 +1,38 @@
+{
+    "manifest_version": 2,
+    "name": "tracklessURL",
+    "version": "0.0.101",
+    "description": "Removes tracking parameters from URLs",
+
+    "permissions": [
+      "declarativeNetRequest",
+      "storage",
+      "<all_urls>"
+    ],
+
+    "background": {
+      "scripts": [ "scripts/background.js" ],
+      "type": "module"
+    },
+  
+    "icons": {
+      "128": "icons/icon128.png",
+      "48": "icons/icon48.png",
+      "32": "icons/icon32.png",
+      "16": "icons/icon16.png"
+    },
+
+    "browser_action": {
+
+    },
+
+    "declarative_net_request": {
+      "rule_resources": [
+        {
+          "id": "placeholder",
+          "enabled": false,
+          "path": "fake.json"
+        }
+      ]
+    }
+}
